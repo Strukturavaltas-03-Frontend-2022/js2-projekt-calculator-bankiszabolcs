@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+.calculator {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Input_Result Input_Result Input_Result Input_Result"
+    "Arithmetics Arithmetics Arithmetics Arithmetics"
+    "Numbers Numbers Numbers Equal"
+    "Numbers Numbers Numbers Equal"
+    "Numbers Numbers Numbers Equal"
+    "Zero Point Clear Equal";
+  width: 300px;
+  height: 300px;
+  background-color: rgb(180, 108, 108);
+}
+
+.inputAndResult {
+  grid-area: Input_Result;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputAndResult input {
+  height: 40px;
+  width: 280px;
+}
+
+.arithmetics {
+  grid-area: Arithmetics;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.arithmetics__cell {
+  width: 20%;
+  height: 80%;
+  border: 1px solid black;
+}
+.equal {
+  grid-area: Equal;
+  width: 100%;
+  height: 100%;
+}
+
+.numbers {
+  margin-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.numbers__cell {
+  text-align: center;
+  width: 20%;
+  border: 1px solid black;
+  height: 30px;
+}
+.zero {
+  grid-area: Zero;
+}
+
+.point {
+  grid-area: Point;
+}
+
+.clear {
+  grid-area: Clear;
+}

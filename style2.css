@@ -1,0 +1,81 @@
+* {
+  box-sizing: border-box;
+}
+.calculator {
+  margin: 0 auto;
+  width: 300px;
+  height: 300px;
+  border: 1px solid blue;
+  padding: 10px;
+}
+.inputResult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+input#inputResult {
+  height: 30px;
+  width: 97%;
+}
+.arithmetics {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  gap: 5px;
+}
+
+.arithmetics__cell {
+  width: 20%;
+  border-radius: 2%;
+  border: 1px solid rgb(145, 145, 145);
+  background-color: rgb(172, 172, 172);
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numbersContainer {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+.numbers__1,
+.numbers__2,
+.numbers__3,
+.numbers__4 {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+  gap: 5px;
+  justify-content: center;
+}
+
+.numbers__4 {
+  align-items: stretch;
+}
+.numbers__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid black;
+  height: 30px;
+  border-radius: 2%;
+  border: 1px solid rgb(185, 185, 185);
+  background-color: rgb(249, 249, 249);
+}
+
+.equal {
+  border-radius: 2%;
+
+  background-color: rgb(88, 110, 255);
+  height: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
