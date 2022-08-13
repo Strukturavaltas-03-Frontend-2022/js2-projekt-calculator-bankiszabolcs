@@ -1,14 +1,3 @@
-/* 
-Event propagation kéne
-rákattintok a calculatorra kell egyszer:
-a)
-    számra kattintok mit csináljon meghívja
-
-
-b) function(érték)
-input értéke =+ érték
-    */
-
 //Variables
 const inputResult = document.getElementById("inputResult");
 const numberCells = Array.from(document.querySelectorAll(".numbers__cell"));
@@ -27,7 +16,7 @@ const modifyInput = (newValue) => {
     newValue === "." ||
     newValue === "-" ||
     newValue === "+" ||
-    newValue === "/" ||
+    newValue === "÷" ||
     newValue === "x"
   )
     inputResult.value = `${getValueFromInput()}${newValue}`;
@@ -49,17 +38,14 @@ const modifyInput = (newValue) => {
   document
     .querySelector(".arithmetics")
     .addEventListener("click", function (e) {
-      console.log(e.target.textContent);
       const actualEl = e.target.textContent;
       if (
         actualEl === "-" ||
         actualEl === "+" ||
-        actualEl === "/" ||
+        actualEl === "÷" ||
         actualEl === "x"
-      ) {
-        console.log("lefutott");
-        modifyInput(e.target.textContent);
-      }
+      )
+        modifyInput(actualEl);
     });
 })();
 
@@ -72,12 +58,12 @@ const modifyInput = (newValue) => {
 
 // Make Equal button work
 equalButton.addEventListener("click", function () {
-  console.log(Number(getValueFromInput()));
+  let userInput = getValueFromInput().replaceAll("x", "*").replaceAll("÷", "/");
+  let result = Function("return " + userInput)();
+  console.log(result);
 });
 
-//Extract values from input
-const extractValues = () => {
-  console.log(getValueFromInput().split("+"));
-};
-
-extractValues();
+const adder = (a, b) => a + b;
+const extraction = (a, b) => a - b;
+const multiplier = (a, b) => a * b;
+const divider = (a, b) => a / b;
