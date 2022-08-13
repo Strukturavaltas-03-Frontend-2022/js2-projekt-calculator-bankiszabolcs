@@ -59,7 +59,7 @@ const modifyInput = (newValue) => {
 // Make Equal button work
 equalButton.addEventListener("click", function () {
   let userInput = getValueFromInput().replaceAll("x", "*").replaceAll("÷", "/");
-  let result = Function("return " + userInput)();
+  let result = new Function("return " + userInput)();
   console.log(result);
 });
 
