@@ -22,7 +22,7 @@ const modifyInput = (newValue) => {
     inputResult.value = `${getValueFromInput()}${newValue}`;
   const inputArr = [...getValueFromInput().trimEnd()];
   const lastChar = inputArr[inputArr.length - 1];
-  lastChar === "-" || lastChar === "+" || lastChar === "/" || lastChar === "*"
+  lastChar === "-" || lastChar === "+" || lastChar === "÷" || lastChar === "x"
     ? deleteArithmeticsClick()
     : arithmeticsClick();
 };
