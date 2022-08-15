@@ -1,77 +1,83 @@
 * {
   box-sizing: border-box;
 }
-
 .calculator {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-auto-flow: row;
-  grid-template-areas:
-    "Input_Result Input_Result Input_Result Input_Result"
-    "Arithmetics Arithmetics Arithmetics Arithmetics"
-    "Numbers Numbers Numbers Equal"
-    "Numbers Numbers Numbers Equal"
-    "Numbers Numbers Numbers Equal"
-    "Zero Point Clear Equal";
+  margin: 0 auto;
   width: 300px;
   height: 300px;
-  background-color: rgb(180, 108, 108);
+  border: 1px solid blue;
+  padding: 10px;
 }
-
-.inputAndResult {
-  grid-area: Input_Result;
+.inputResult {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
-.inputAndResult input {
-  height: 40px;
-  width: 280px;
+input#inputResult {
+  height: 30px;
+  width: 97%;
 }
-
 .arithmetics {
-  grid-area: Arithmetics;
   display: flex;
-  gap: 5px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  gap: 5px;
 }
 
 .arithmetics__cell {
   width: 20%;
-  height: 80%;
-  border: 1px solid black;
-}
-.equal {
-  grid-area: Equal;
-  width: 100%;
-  height: 100%;
+  border-radius: 2%;
+  border: 1px solid rgb(145, 145, 145);
+  background-color: rgb(172, 172, 172);
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
-.numbers {
+.numbersContainer {
   margin-top: 5px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   gap: 5px;
 }
-.numbers__cell {
-  text-align: center;
+.numbers__1,
+.numbers__2,
+.numbers__3,
+.numbers__4 {
+  display: flex;
+  flex-direction: column;
   width: 20%;
+  gap: 5px;
+  justify-content: center;
+}
+
+.numbers__4 {
+  align-items: stretch;
+}
+.numbers__cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   border: 1px solid black;
   height: 30px;
-}
-.zero {
-  grid-area: Zero;
-}
-
-.point {
-  grid-area: Point;
+  border-radius: 2%;
+  border: 1px solid rgb(185, 185, 185);
+  background-color: rgb(249, 249, 249);
+  cursor: pointer;
 }
 
-.clear {
-  grid-area: Clear;
+.equal {
+  border-radius: 2%;
+  cursor: pointer;
+  background-color: rgb(88, 110, 255);
+  height: 135px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

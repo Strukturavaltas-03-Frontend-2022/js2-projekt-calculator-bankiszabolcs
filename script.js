@@ -14,12 +14,17 @@ const modifyInput = (newValue) => {
   if (
     !isNaN(Number(newValue)) ||
     newValue === "." ||
-    newValue === "-" ||
-    newValue === "+" ||
-    newValue === "÷" ||
-    newValue === "x"
+    newValue === " - " ||
+    newValue === " + " ||
+    newValue === " ÷ " ||
+    newValue === " x "
   )
     inputResult.value = `${getValueFromInput()}${newValue}`;
+  const inputArr = [...getValueFromInput().trimEnd()];
+  const lastChar = inputArr[inputArr.length - 1];
+  lastChar === "-" || lastChar === "+" || lastChar === "/" || lastChar === "*"
+    ? deleteArithmeticsClick()
+    : arithmeticsClick();
 };
 
 //A function that put eventlisteners on the cells containing numbers.
@@ -31,24 +36,27 @@ const modifyInput = (newValue) => {
       modifyInput(event.target.dataset.value);
     })
   );
+  arithmeticsClick();
 })();
-
+function check(e) {
+  const actualEl = e.target.textContent;
+  if (
+    actualEl === "-" ||
+    actualEl === "+" ||
+    actualEl === "÷" ||
+    actualEl === "x"
+  )
+    modifyInput(" " + actualEl + " ");
+  console.log(e);
+}
 //Put event listeners on the cells containing arithmetics
-(function () {
-  document
-    .querySelector(".arithmetics")
-    .addEventListener("click", function (e) {
-      const actualEl = e.target.textContent;
-      if (
-        actualEl === "-" ||
-        actualEl === "+" ||
-        actualEl === "÷" ||
-        actualEl === "x"
-      )
-        modifyInput(actualEl);
-    });
-})();
-
+function arithmeticsClick() {
+  document.querySelector(".arithmetics").addEventListener("click", check);
+}
+//Delete event listeners from the aritmetics buttons
+function deleteArithmeticsClick() {
+  document.querySelector(".arithmetics").removeEventListener("click", check);
+}
 //Make Clear button work
 (function () {
   document
@@ -59,8 +67,37 @@ const modifyInput = (newValue) => {
 // Make Equal button work
 equalButton.addEventListener("click", function () {
   let userInput = getValueFromInput().replaceAll("x", "*").replaceAll("÷", "/");
-  let result = new Function("return " + userInput)();
-  console.log(result);
+
+  const tag = (texts, ...values) => {
+    console.log(texts);
+    console.log(values);
+  };
+
+  let userInputArr = userInput.split(" ");
+  let arithmeticArr = userInputArr.filter(
+    (item) => item === "+" || item === "-" || item === "*" || item === "/"
+  );
+  let numberArr = userInputArr.filter(
+    (item) => item !== "+" && item !== "-" && item !== "*" && item !== "/"
+  );
+
+  console.log(userInputArr);
+  console.log(arithmeticArr);
+  console.log(numberArr);
+  let sum = 0;
+  //tag("" + userInput);
+  numberArr.map((item, index) => {
+    let partSum = 0;
+    if (arithmeticArr[index] === "+")
+      partSum = Number(item) + Number(numberArr[index + 1]);
+    if (arithmeticArr[index] === "-") partSum = item - numberArr[index + 1];
+    if (arithmeticArr[index] === "*") partSum = item * numberArr[index + 1];
+    if (arithmeticArr[index] === "/") partSum = item / numberArr[index + 1];
+    sum = partSum + sum;
+  });
+  console.log(sum);
+  deleteValueFromInput();
+  modifyInput(sum);
 });
 
 const adder = (a, b) => a + b;
