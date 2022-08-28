@@ -4,7 +4,7 @@ const numberCells = Array.from(document.querySelectorAll(".numbers__cell"));
 const equalButton = document.querySelector(".equal");
 let sum = 0;
 let partSum=0;
-const validKeys= ['0','1','2','3','4','6','7','8','9',',','+','-','/','*', 'Backspace', '.', ' ']
+const validKeys= ['0','1','2','3','4','5','6','7','8','9',',','+','-','/','*', 'Backspace', '.', ' ']
 const arithmeticSigns = ['+', '-', '/', '*']
 
 //A function that gives you the value of inputResult.
@@ -22,8 +22,12 @@ const deleteValueFromInput = () => (inputResult.value = "");
 inputResult.addEventListener("keydown", function (e) {
   if(validKeys.indexOf(e.key) < 1) e.preventDefault()
   if(arithmeticSigns.indexOf(e.key) > -1)modifyInput(" ");
-/*   if(arithmeticSigns.indexOf([...inputResult.value][length-1])) */
   if(arithmeticSigns.indexOf(e.target.value[e.target.value.length-1]) > -1) modifyInput(" ");
+  const inputArr = [...getValueFromInput().trimEnd()];
+  const lastChar = inputArr[inputArr.length - 1];
+  (lastChar === "-" || lastChar === "+" || lastChar === "÷" || lastChar === "x") && arithmeticSigns.indexOf(e.key) > -1? e.preventDefault():console.log('hamis')
+  console.log(lastChar);
+  
 });
 
 
@@ -46,7 +50,7 @@ const modifyInput = (newValue) => {
     ? deleteArithmeticsClick()
     : arithmeticsClick();
   }else{
-    alert('Write numbers or arithmetic signs!')
+    inputResult.value='ERROR'
   }
 };
 
@@ -126,7 +130,7 @@ const calculate = function(){
 const equal = ()=>{
   calculate();
   deleteValueFromInput();
-  modifyInput(partSum);
+  modifyInput(partSum.toPrecision(2));
 }
 // Make Equal button work
 equalButton.addEventListener("click", equal);

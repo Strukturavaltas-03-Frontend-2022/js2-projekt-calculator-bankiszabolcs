@@ -7,7 +7,8 @@
   margin: 0 auto;
   width: 300px;
   height: 300px;
-  border: 1px solid blue;
+  border: 1px solid #b6b6b6;
+  border-radius: 2px;
   padding: 10px;
 }
 .inputResult {
@@ -19,6 +20,7 @@
 input#inputResult {
   height: 30px;
   width: 97%;
+  border: 1px solid #e7e7e7;;
 }
 .arithmetics {
   display: flex;
@@ -31,8 +33,8 @@ input#inputResult {
 .arithmetics__cell {
   width: 20%;
   border-radius: 2%;
-  border: 1px solid rgb(145, 145, 145);
-  background-color: rgb(172, 172, 172);
+  border: 1px solid #e7e7e7;
+  background-color: #ddd;
   height: 30px;
   display: flex;
   align-items: center;
@@ -69,15 +71,15 @@ input#inputResult {
   border: 1px solid black;
   height: 30px;
   border-radius: 2%;
-  border: 1px solid rgb(185, 185, 185);
-  background-color: rgb(249, 249, 249);
+  border: 1px solid #e7e7e7;
+  background-color: #f9f9f9;
   cursor: pointer;
 }
 
 .equal {
   border-radius: 2%;
   cursor: pointer;
-  background-color: rgb(88, 110, 255);
+  background-color: #1292fd;
   height: 135px;
   display: flex;
   align-items: center;
